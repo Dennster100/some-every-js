@@ -8,7 +8,7 @@ Examples:
 
 function hasOddNumber(arr) {
     let bool = arr.some(function(value){
-        vlaue.toString();
+        return value % 2 !== 0;
 
     });
     return bool;
@@ -23,9 +23,11 @@ Examples:
 */
 
 function hasAZero(num) {
-    let stringNum = Array.from(num.toString());
-    let bool = stringNum.some(function(el){
-        return el === 0;
+    
+    let arrayNum = Array.from(num.toString());
+    console.log(arrayNum);
+    let bool = arrayNum.some(function(el){
+        return el === '0';
     });
     return bool;
 }
@@ -54,16 +56,17 @@ Examples:
 */
 
 function hasNoDuplicates(arr) {
-    let tempArr =[];
-    let bool = arr.some(function(el){
-        if(tempArr.some(function(num){
-            return el !== num;
-        })){
+    let tempArr = [];
+    let bool = arr.every(function(el){
+        if (tempArr[0] === undefined) {
             tempArr.push(el);
-        }else {
-            return false;
+            return true;
+        } else {
+            for (let num of tempArr) {
+                return el !== num;
+            }
+            tempArr.push(el);
         }
-    
     });
     return bool;
 
